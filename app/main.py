@@ -9,13 +9,16 @@ def copy_file(command: str) -> None:
         return
 
     source_file_name = parts[1]
-    if source_file_name == "non_existing_file.txt":
+    try:
+        with open(source_file_name):
+            pass
+    except FileNotFoundError:
         return
 
     destination_file_name = parts[2]
 
     if source_file_name == destination_file_name:
-        pass
+        return
 
     with (
         open(source_file_name, "r") as source_file_object,
