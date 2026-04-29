@@ -5,7 +5,7 @@ def copy_file(command: str) -> None:
     parts = command.split()
     if not parts[0] == "cp":
         return
-    if len(parts) == 2:
+    if not len(parts) == 3:
         return
 
     source_file_name = parts[1]
