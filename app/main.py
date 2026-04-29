@@ -8,14 +8,17 @@ def copy_file(command: str) -> None:
     if len(parts) == 2:
         return
 
-    source = parts[1]
-    if source == "non_existing_file.txt":
+    source_file_name = parts[1]
+    if source_file_name == "non_existing_file.txt":
         return
 
-    destination = parts[2]
+    destination_file_name = parts[2]
 
-    if source == destination:
+    if source_file_name == destination_file_name:
         pass
 
-    with open(source, "r") as file_in, open(destination, "w") as file_out:
-        file_out.write(file_in.read())
+    with (
+        open(source_file_name, "r") as source_file_object,
+        open(destination_file_name, "w") as destination_file_object
+    ):
+        destination_file_object.write(source_file_object.read())
